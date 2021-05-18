@@ -9,6 +9,12 @@ const PageStyles = StyleSheet.create({
   horizontal: {
     flexDirection: 'row',
   },
+  justifyContentCenter: {
+    justifyContent: 'center',
+  },
+  justifyContentBetween: {
+    justifyContent: 'space-evenly',
+  },
 });
 
 export default PageStyles;

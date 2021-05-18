@@ -1,5 +1,6 @@
 {
-    "cSpell.words": [
-        "Pressable"
-    ]
+  "cSpell.words": ["Pressable"],
+  "macColorPicker.defaultColorNotation": "hex",
+  "macColorPicker.lowercaseHexColors": true,
+  "macColorPicker.shortHexColors": true
 }

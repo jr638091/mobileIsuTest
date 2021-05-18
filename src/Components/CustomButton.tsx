@@ -1,7 +1,13 @@
 import React from 'react';
-import { Pressable } from 'react-native';
+import { Pressable, StyleProp, ViewStyle } from 'react-native';
 
-const CustomButton = ({
+interface CustomButtonProp {
+  onPress?: () => void;
+  onLongPress?: () => void;
+  style?: StyleProp<ViewStyle>;
+}
+
+const CustomButton: React.FC<CustomButtonProp> = ({
   children,
   onPress = () => {},
   onLongPress = () => {},

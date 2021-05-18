@@ -1,11 +1,19 @@
 import React from 'react';
-import { Alert, Button, TextInput, View } from 'react-native';
+import { Button, View } from 'react-native';
 import PageStyle from '../Styles/Page';
-import InputStyles from '../Styles/Input';
+// import InputStyles from '../Styles/Input';
+import { Input } from 'react-native-elements';
 
-const Login = ({ navigation }) => {
-  const [userName, onChangeUserName] = React.useState(null);
-  const [password, onChangePassword] = React.useState(null);
+interface LoginProp {
+  navigation: {
+    setOptions: (arg0: Object) => {};
+    replace: (arg0: string) => {};
+  };
+}
+
+const Login: React.FC<LoginProp> = ({ navigation }) => {
+  const [userName, onChangeUserName] = React.useState('');
+  const [password, onChangePassword] = React.useState('');
 
   var valid = userName?.length > 0 && password?.length > 0;
 
@@ -19,15 +27,15 @@ const Login = ({ navigation }) => {
           alignItems: 'center',
         },
       ]}>
-      <TextInput
-        style={InputStyles.input}
+      <Input
+        // style={InputStyles.input}
         placeholder="Full Name"
         value={userName}
         onChangeText={onChangeUserName}
       />
 
-      <TextInput
-        style={InputStyles.input}
+      <Input
+        // style={InputStyles.input}
         value={password}
         onChangeText={onChangePassword}
         placeholder="Password"
