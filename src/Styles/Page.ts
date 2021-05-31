@@ -4,16 +4,33 @@ const PageStyles = StyleSheet.create({
   fullPage: {
     height: '100%',
     backgroundColor: '#fff',
-    padding: '5%',
+  },
+  padding: {
+    padding: '3%',
   },
   horizontal: {
     flexDirection: 'row',
+  },
+  vertical: {
+    flexDirection: 'column',
   },
   justifyContentCenter: {
     justifyContent: 'center',
   },
   justifyContentBetween: {
+    justifyContent: 'space-between',
+  },
+  justifyContentAround: {
     justifyContent: 'space-evenly',
+  },
+  alignItemCenter: {
+    alignItems: 'center',
+  },
+  flex1: {
+    flex: 1,
+  },
+  flex2: {
+    flex: 2,
   },
 });
 

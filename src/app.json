@@ -1,4 +1,7 @@
 {
   "name": "IsuCorpTest",
-  "displayName": "IsuCorpTest"
+  "displayName": "IsuCorpTest",
+  "ios": {
+    "supportsTablet": true
+  }
 }

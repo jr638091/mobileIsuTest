@@ -11,6 +11,7 @@ interface NavigationProp<T> extends NavigationRouteProp<T> {
     pop: () => {};
     push: (name: string, props?: object) => {};
     replace: (name: string, props?: object) => {};
+    setOptions: (arg0: Object) => {};
   };
 }
 

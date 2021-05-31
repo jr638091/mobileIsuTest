@@ -5,12 +5,14 @@ import { dataProvider } from '../Configurations/conf';
 
 // System Calendar Provider
 class CalendarProvider {
-  constructor() {
-    // Request Calendar Permission
-    RNCalendarEvents.requestPermissions(false);
-  }
+  constructor() {}
 
   async addEvent(t: Ticket) {
+    var hasPermission = await RNCalendarEvents.checkPermissions(false);
+
+    if (!hasPermission) {
+      await RNCalendarEvents.requestPermissions();
+    }
     const calendarId = await (
       await RNCalendarEvents.findCalendars()
     ).find(e => e.isPrimary)?.id;
@@ -23,13 +25,6 @@ class CalendarProvider {
       id !== undefined
         ? await RNCalendarEvents.findEventById(id as string)
         : null;
-
-    var hasPermission = await RNCalendarEvents.checkPermissions(false);
-
-    if (!hasPermission) {
-      RNCalendarEvents.requestPermissions();
-      return;
-    }
 
     if (calendarId !== undefined && event == null) {
       RNCalendarEvents.saveEvent(title, {

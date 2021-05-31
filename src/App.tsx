@@ -21,6 +21,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Login from './Pages/Login';
 import { Home } from './Pages/Home';
 import WorkTicket from './Pages/WorkTicket';
+import GetDirection from './Pages/GetDirections';
+import RNCalendarEvents from 'react-native-calendar-events';
+
+RNCalendarEvents.requestPermissions(false);
 
 const Stack = createStackNavigator();
 
@@ -31,7 +35,7 @@ const headerStyle = StyleSheet.create({
     width: '100%',
   },
   text: {
-    fontSize: 23,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   divider: {
@@ -41,7 +45,7 @@ const headerStyle = StyleSheet.create({
     marginHorizontal: 5,
   },
   pageTitle: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 'bold',
     color: 'gray',
   },
@@ -53,24 +57,52 @@ const App = () => {
       <Stack.Navigator
         initialRouteName="Login"
         screenOptions={{
+          headerStatusBarHeight: 40,
           headerBackTitleVisible: false,
-          headerStyle: { backgroundColor: '#cfd0d3' },
+          headerStyle: {
+            backgroundColor: '#cfd0d3',
+          },
           headerTitleStyle: {
             paddingLeft: 10,
           },
-          headerTitleAlign: 'left',
-          // headerTitleAlign: 'left',
           headerTitle: prop => (
             <View style={headerStyle.left}>
-              <Text style={[headerStyle.text]}>ACME</Text>
-              <View style={headerStyle.divider} />
               <Text style={headerStyle.pageTitle}>{prop.children}</Text>
             </View>
           ),
         }}>
-        <Stack.Screen name="Login" component={Login} />
-        <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Ticket" component={WorkTicket} />
+        <Stack.Screen
+          name="Login"
+          options={{ headerShown: false }}
+          component={Login}
+        />
+        <Stack.Screen
+          name="Home"
+          options={{
+            headerTitle: prop => (
+              <View style={headerStyle.left}>
+                <Text style={[headerStyle.text]}>ACME</Text>
+                <View style={headerStyle.divider} />
+                <Text style={headerStyle.pageTitle}>{prop.children}</Text>
+              </View>
+            ),
+          }}
+          component={Home}
+        />
+        <Stack.Screen
+          name="Ticket"
+          options={{
+            title: 'Work Ticket',
+          }}
+          component={WorkTicket}
+        />
+        <Stack.Screen
+          name="Map"
+          options={{
+            title: 'Get Directions',
+          }}
+          component={GetDirection}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
